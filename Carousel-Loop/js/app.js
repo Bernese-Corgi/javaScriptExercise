@@ -44,11 +44,14 @@ const prevSlide = total => {
     $carouselSlides.style.setProperty('--currentSlide', --currentSlide);
   }
   if (currentSlide === 0) {
-    currentSlide = total;
     $carouselSlides.addEventListener('transitionend', () => {
+      if (currentSlide !== 0) return;
+      currentSlide = total;
+      console.log('hi');
       $carouselSlides.style.setProperty('--duration', 0);
       $carouselSlides.style.setProperty('--currentSlide', currentSlide);
-    })
+    });
+
   }
 };
 
@@ -58,11 +61,13 @@ const nextSlide = total => {
     $carouselSlides.style.setProperty('--currentSlide', ++currentSlide);
   }
   if (currentSlide === total + 1) {
-    currentSlide = 1;
     $carouselSlides.addEventListener('transitionend', () => {
+      if (currentSlide !== total + 1) return;
+      currentSlide = 1;
+      console.log('hi');
       $carouselSlides.style.setProperty('--duration', 0);
       $carouselSlides.style.setProperty('--currentSlide', currentSlide);
-    })
+    });
   }
 };
 
