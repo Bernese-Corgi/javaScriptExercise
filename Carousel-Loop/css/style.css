@@ -65,3 +65,13 @@ body {
 .carousel-control.next {
   right: 0;
 }
+
+.carousel-control.autoplay {
+  top: 25px;
+  left: 7px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 3px 8px;
+  background-color: gray;
+  border-radius: 50px;
+}
