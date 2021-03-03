@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spaghetti Timer</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <!--TODO 일시정지 기능-->
+  <!--TODO reset 기능-->
+  <!--TODO 00:00 기능-->
+  <!--TODO 시간 사용자 설정대로 조작 기능-->
+  <div class="container">
+
+    <div class="time-container">
+      <span class="disp-min">7</span>
+      <span>:</span>
+      <span class="disp-sec">00</span>
+    </div>
+
+    <div class="btn-container">
+      <button class="start">start</button>
+      <button class="restart">restart</button>
+      <button class="stop">stop</button>
+    </div>
+
+    <div class="message"></div>
+  </div>
+
+  <script>
+    let sec = 60;
+    let min = 7;
+    let timerId = null;
+
+    const $dispMin = document.querySelector('.disp-min');
+    const $dispSec = document.querySelector('.disp-sec');
+    const $start = document.querySelector('.start');
+    const $restart = document.querySelector('.restart');
+    const $stop = document.querySelector('.stop');
+    const $message = document.querySelector('.message');
+
+    $start.onclick = () => {
+      if (timerId) return;
+      timerId = setInterval(spaghettiTimer, 50);
+    };
+
+    $restart.onclick = () => {
+      if (timerId) return;
+      sec = 60;
+      min = 7;
+      $dispSec.textContent = sec;
+      $dispMin.textContent = min;
+
+      timerId = setInterval(spaghettiTimer, 50);
+    };
+
+    function spaghettiTimer() {
+
+      sec -= 1;
+      $dispSec.textContent = sec;
+
+      if (min > 0 && sec === 0) {
+        sec = 60;
+      } else if (sec === 59) {
+        min -= 1;
+        $dispMin.textContent = min;
+      } else if (min === 0 && sec === 0) {
+        clearInterval(timerId);
+        $message.textContent = 'Hello, spaghetti!';
+        $message.style.backgroundColor = 'gold';
+      }
+    }
+
+    $stop.onclick = () => {
+      clearInterval(timerId);
+    };
+  </script>
+</body>
+
+</html>
