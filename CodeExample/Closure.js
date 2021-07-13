@@ -11,8 +11,10 @@ let numGlobal = 0;
 // 카운트 상태 변경 함수
 const increaseGlobal = function () {
   // 카운트 상태를 1만큼 증가 시킨다.
-  return ++num;
+  return ++numGlobal;
 };
+
+//! increaseGlobal 함수 외의 다른 함수도 상태 변수 numGlobal을 변경할 수 있다.
 
 console.log(increaseGlobal()); // 1
 console.log(increaseGlobal()); // 2
@@ -28,7 +30,7 @@ const increaseLocal = function () {
   return ++num;
 };
 
-// 이전 상태를 유지하지 못한다.
+//! 이전 상태를 유지하지 못한다. (상태 변수가 호출될때마다 초기화된다.)
 console.log(increaseLocal()); // 1
 console.log(increaseLocal()); // 1
 console.log(increaseLocal()); // 1
@@ -45,6 +47,8 @@ const increaseIIFE = (function () {
     return ++num;
   };
 })();
+
+//! 클로저 함수가 한가지의 반환값만 반환한다.
 
 console.log(increaseIIFE()); // 1
 console.log(increaseIIFE()); // 2
