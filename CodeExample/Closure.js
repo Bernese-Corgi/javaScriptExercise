@@ -100,3 +100,20 @@ console.log(counterInstance.increase()); // 1
 console.log(counterInstance.increase()); // 2
 console.log(counterInstance.decrease()); // 1
 console.log(counterInstance.decrease()); // 0
+
+/* ------------------ */
+/*     클로저의 활용     */
+/* ----------------- */
+
+/* 1-1. var로 선언한 for문의 선언문이 전역 객체의 프로퍼티로 등록되어 발생하는 문제 */
+var funcs1 = [];
+
+for (var g = 0; g < 3; g++) {
+  funcs1[g] = function () {
+    return g;
+  };
+}
+
+for (var h = 0; h < funcs2.length; h++) {
+  console.log(funcs1[h]()); // 3 3 3
+}
