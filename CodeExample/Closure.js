@@ -114,7 +114,7 @@ for (var g = 0; g < 3; g++) {
   };
 }
 
-for (var h = 0; h < funcs2.length; h++) {
+for (var h = 0; h < funcs1.length; h++) {
   console.log(funcs1[h]()); // 3 3 3
 }
 
