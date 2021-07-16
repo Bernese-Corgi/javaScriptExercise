@@ -117,3 +117,18 @@ for (var g = 0; g < 3; g++) {
 for (var h = 0; h < funcs2.length; h++) {
   console.log(funcs1[h]()); // 3 3 3
 }
+
+/* 1-2. 즉시 실행 함수로 감싸고, 매개변수를 지역 변수처럼 사용하면 해결 가능하다. */
+var funcs2 = [];
+
+for (var a = 0; a < 3; a++) {
+  funcs2[a] = (function (id) {
+    return function () {
+      return id;
+    };
+  })(i);
+}
+
+for (var b = 0; b < funcs2.length; b++) {
+  console.log(funcs2[b]()); // 1 2 3
+}
