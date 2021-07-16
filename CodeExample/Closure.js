@@ -132,3 +132,16 @@ for (var a = 0; a < 3; a++) {
 for (var b = 0; b < funcs2.length; b++) {
   console.log(funcs2[b]()); // 1 2 3
 }
+
+/* 1-3. let 키워드로 선언해서 해결하는 것이 더 간단하다. */
+const funcs = [];
+
+for (let i = 0; i < 3; i++) {
+  funcs[i] = function () {
+    return i;
+  };
+}
+
+for (let i = 0; i < funcs.length; i++) {
+  console.log(funcs[i]()); // 0 1 2
+}
